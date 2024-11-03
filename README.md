@@ -1,5 +1,5 @@
 # CSC 321 Project
-CSC321 Midterm Project
+CSC321 Final Project
 
 Forage Finder:
 
