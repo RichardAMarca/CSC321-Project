@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Schedule and plan your outdoor trips with others, including foraging, fishing, and more.">
+    <title>Schedule a Trip - For Outdoor Adventures</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #af4c9d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .trip-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+            margin: auto;
+        }
+        .trip-form input[type="text"], .trip-form input[type="email"], .trip-form input[type="date"], .trip-form textarea, .trip-form select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .trip-form button {
+            background-color: #af4c9d;
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .trip-form button:hover {
+            background-color: #af4c9d;
+        }
+        .upcoming-trips {
+            margin-top: 40px;
+        }
+        .trip-card {
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+            margin: 10px auto;
+        }
+        .trip-card h3 {
+            color: #4CAF50;
+        }
+        footer {
+            text-align: center;
+            padding: 0px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Schedule Your Next Outdoor Adventure</h1>
+        <p>Plan and schedule trips for foraging, fishing, and more with others in the community.</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="schedule-trip.html">Schedule Trip</a>
+        <a href="my-trips.html">My Trips</a>
+    </nav>
+
+    <div class="content">
+        <section>
+            <h2>Plan a New Trip</h2>
+            <p>Fill out the form below to schedule a new outdoor adventure. Choose your activity, location, date, and provide a brief description.</p>
+
+            <div class="trip-form">
+                <h3>Schedule a New Trip</h3>
+                <form action="#" method="POST">
+                    <label for="activity">Activity Type:</label>
+                    <select id="activity" name="activity" required>
+                        <option value="Foraging">Foraging</option>
+                        <option value="Fishing">Fishing</option>
+                        <option value="Hunting">Hunting</option>
+                    </select>
+
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" required placeholder="Enter the location of your trip">
+
+                    <label for="date">Date of Trip:</label>
+                    <input type="date" id="date" name="date" required>
+
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="4" required placeholder="Provide a brief description of the trip."></textarea>
+
+                    <label for="contact">Your Email (Optional):</label>
+                    <input type="email" id="contact" name="contact" placeholder="Enter your email for trip updates">
+
+                    <button type="submit">Schedule Trip</button>
+                </form>
+            </div>
+
+            <section class="upcoming-trips">
+                <h2>Your Upcoming Trips</h2>
+                <p>Here are the trips you've scheduled so far:</p>
+
+                <!-- Upcoming Trip 1 -->
+                <div class="trip-card">
+                    <h3>Trip 1</h3>
+                    <p><strong>Activity:</strong> </p>
+                    <p><strong>Location:</strong> </p>
+                    <p><strong>Date:</strong> </p>
+                    <p><strong>Description:</strong> </p>
+                    <p><strong>Contact:</strong> </p>
+                </div>
+
+                <!-- Upcoming Trip 2 -->
+                <div class="trip-card">
+                    <h3>Trip 2</h3>
+                    <p><strong>Activity:</strong> </p>
+                    <p><strong>Location:</strong>  </p>
+                    <p><strong>Date:</strong> </p>
+                    <p><strong>Description:</strong> </p>
+                    <p><strong>Contact:</strong> </p>
+                </div>
+
+            </section>
+        </section>
+    </div>
+    <hr>
+
+    <footer>
+        <p>&copy; 2024 Forage Finder. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

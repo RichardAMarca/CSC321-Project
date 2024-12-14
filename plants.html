@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A website about edible plants and animals as well as their uses in cooking and foraging.">
+    <title>Forage Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .content {
+            padding: 20px;
+        }
+        .search-bar {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 60%;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+        .plant-section {
+            margin-bottom: 30px;
+        }
+        .plant-section h2 {
+            color: #4CAF50;
+        }
+        .plant-section ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 0;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to Forage Finder</h1>
+        <p>Discover plants you can eat, forage, and cook with!</p>
+    </header>
+
+     <!-- Search Bar -->
+     <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for a plant..." onkeyup="searchPlants()">
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#popular-plants">Popular Edible Plants</a>
+        <a href="#foraging-tips">Foraging Tips</a>
+        <a href="#plant-recipes">Plant Recipes</a>
+    </nav>
+
+    <div class="content">
+        <section id="introduction" class="plant-section">
+            <h2>What Are Edible Plants?</h2>
+            <p>Edible plants are any plants that can be consumed by humans, either raw or cooked. They come from various categories, including vegetables, fruits, herbs, and even flowers. Many edible plants grow in the wild and can be foraged, while others are cultivated in gardens or farms.</p>
+        </section>
+
+        <section id="popular-plants" class="plant-section">
+            <h2>Popular Edible Plants</h2>
+            <ul>
+                <li><strong>Spinach:</strong> A leafy green that is packed with nutrients, perfect for salads or cooking.</li>
+                <li><strong>Wild Garlic:</strong> A strong-smelling herb commonly found in woodlands, great for adding flavor to dishes.</li>
+                <li><strong>Strawberries:</strong> A sweet fruit that is easy to grow and loved by many.</li>
+                <li><strong>Dandelions:</strong> Often seen as weeds, but every part of the plant is edible and highly nutritious.</li>
+                <li><strong>Mint:</strong> A fragrant herb, great for teas, garnishing, and adding flavor to dishes.</li>
+            </ul>
+        </section>
+
+        <section id="foraging-tips" class="plant-section">
+            <h2>Foraging Tips</h2>
+            <p>Foraging is the act of gathering wild plants, but it’s important to follow some basic guidelines to ensure safety and sustainability:</p>
+            <ul>
+                <li>Always correctly identify the plant before eating it. Some plants are toxic and can cause harm.</li>
+                <li>Only harvest what you need, and avoid taking more than a third of any plant population.</li>
+                <li>Be mindful of the environment; avoid disturbing wildlife or damaging plants.</li>
+                <li>Check local regulations to ensure foraging is allowed in your area.</li>
+            </ul>
+        </section>
+
+        <section id="plant-recipes" class="plant-section">
+            <h2>Simple Recipes Using Edible Plants</h2>
+            <h3>Spinach and Garlic Stir-Fry</h3>
+            <p>This quick and easy recipe uses fresh spinach and wild garlic, sautéed with olive oil, garlic, and a pinch of salt. Perfect as a side dish or a light meal!</p>
+            <h3>Dandelion Salad</h3>
+            <p>Use young, tender dandelion leaves to make a nutritious salad. Combine with other greens, olive oil, and balsamic vinegar for a fresh, tangy dish.</p>
+        </section>
+
+    </div>
+    <hr>
+
+    <footer>
+        <p>&copy; 2024 Forage Finder. All Rights Reserved.</p>
+    </footer>
+ <script>
+        // JavaScript function to filter plants based on search input
+        function searchPlants() {
+            // Get the search input value
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+
+            // Get the list of plant items
+            const plantList = document.getElementById('plantList');
+            const plants = plantList.getElementsByTagName('li');
+
+            // Loop through all the plant items
+            for (let i = 0; i < plants.length; i++) {
+                const plantName = plants[i].getElementsByTagName('strong')[0].innerText.toLowerCase();
+
+                // If the plant name matches the search query, display it, otherwise hide it
+                if (plantName.includes(searchQuery)) {
+                    plants[i].style.display = '';
+                } else {
+                    plants[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

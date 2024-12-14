@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A website about edible plants and animals as well as their uses in cooking and foraging.">
+    <title>Forage Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #3a3cb8;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .content {
+            padding: 20px;
+        }
+        .search-bar {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 60%;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+        .fish-section {
+            margin-bottom: 30px;
+        }
+        .fish-section h2 {
+            color: #3a3cb8;
+        }
+        .fish-section ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 0px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to Forage Finder</h1>
+        <p>Discover fish you can eat, catch, and cook with!</p>
+    </header>
+
+     <!-- Search Bar -->
+     <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for a fish..." onkeyup="searchFish()">
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#popular-fish">Popular Edible Fish</a>
+        <a href="#cdfw-rules-fish">California Department of Fish and Wildlife Regulations</a>
+        <a href="#fish-recipes">Fish Recipes</a>
+    </nav>
+
+    <div class="content">
+        <section id="introduction" class="fish-section">
+            <h2>What Are Edible Fish?</h2>
+            <p>Edible fish are any fish that can be consumed by humans, either raw or cooked. They come from various categories, including fish, mollusks, and crustaceans. These fish can be found in either freshwater or saltwater areas.</p>
+        </section>
+
+        <section id="popular-fish" class="fish-section">
+            <h2>Popular Edible Fish</h2>
+            <ul>
+                <li><strong>Blue Mussels:</strong> A common mussel that is found throught the Pacific Ocean.</li>
+                <li><strong>Pacific Razor Clam:</strong> A delicious clam that is found under the sands of beaches.</li>
+                <li><strong>Crappie:</strong> Despite its unappetizing name, it is considered on of the best tasting freshwater fish.</li>
+                <li><strong>Rainbow Trout:</strong> A delicious freshwater fish that is found in colder areas, such as Big Bear or Lake Arrowhead.</li>
+                <li><strong>California Halibut:</strong> A large saltwater fish that has a mild, sweet flavor, firm texture, and large white flakes. It's a lean, white fish that's versatile and easy to prepare.</li>
+            </ul>
+        </section>
+
+        <section id="cdfw-rules-fish" class="fish-section">
+            <h2>California Department of Fish and Wildlife Regulations</h2>
+            <p>These are some basic rules and laws that must me followed before you can catch fish.</p>
+            <ul>
+                <li>Obtain a valid California Fishing License.</li>
+                <li>Make sure to check the bag limit for every species you wish to collect.</li>
+                <li>Be mindful of where you are; avoid disturbing wildlife or damaging plants.</li>
+                <li>Check local regulations to ensure fishing is allowed in your area.</li>
+            </ul>
+        </section>
+
+        <section id="fish-recipes" class="fish-section">
+            <h2>Simple Recipes Using Edible Fish</h2>
+            <h3>Crappie Fish-Fry</h3>
+            <p>This quick and easy recipe uses freshly caught crappie, fried with peanut oil, flour, and some cayenne pepper for a little kick.</p>
+            <h3>Garlic Butter Razor Clam</h3>
+            <p>This simple recipe uses razor clams, sautéed with vegetable oil, garlic, melted butter, scallions, and some black peppercorn. Recommended to cook on a skillet.</p>
+        </section>
+    </div>
+    <hr>
+
+    <footer>
+        <p>&copy; 2024 Forage Finder. All Rights Reserved.</p>
+    </footer>
+    <script>
+        // JavaScript function to filter fish based on search input
+        function searchFish() {
+            // Get the search input value
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+
+            // Get the list of fish items
+            const fishList = document.getElementById('fishList');
+            const fish = fishList.getElementsByTagName('li');
+
+            // Loop through all the fish items
+            for (let i = 0; i < fish.length; i++) {
+                const fishName = fish[i].getElementsByTagName('strong')[0].innerText.toLowerCase();
+
+                // If the fish name matches the search query, display it, otherwise hide it
+                if (fishName.includes(searchQuery)) {
+                    fish[i].style.display = '';
+                } else {
+                    fish[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
