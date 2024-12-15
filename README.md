@@ -4,13 +4,10 @@ CSC321 Final Project
 Forage Finder:
 
 Proposed Architecture
-The architecture of this application will be composed of an HTML, CSS, JS, and Python front end and a MongoDB (NoSQL) backend.
+The architecture of this application will be composed of HTML and JS in the front end and MySQL in the backend.
 
 Database Schema (Initial)
-The schema is simple. Each user will have a profile, which is a username and password. Each user will also have "My Groups" attached to their profile. These groups have the users who are in the group, as well as the trips they have scheduled. There will also be a search system that is connected to a database.
-
-Routes & HTTP Methods (Initial)
-Login Page -- POST, GET Queue Page -- POST, GET, UPDATE Past Sessions -- GET
+The schema is simple. Each user will use thier emails to create and join groups as well as trips. These groups have the users who are in the group, as well as the trips they have scheduled. There will be a search system that is connected to a database for Plants, Fish, Game, and their recipes. There is also redirects to official websites about the laws for fish and game.
 
 Routes & Webpage Functionality (Initial)
-Login Page -- User authentication Queue Page -- Create group, My Groups, Schedule trip, My Trips, Search flora, Search fauna, My Favorites.
+User authentication Queue Page -- Plants, Fish, Game, Hazards, My Groups, My Trips.
