@@ -81,7 +81,8 @@
 
      <!-- Search Bar -->
      <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search for a fish..." onkeyup="searchFish()">
+        <input type="text" id="searchInput" placeholder="Search for a fish..." onkeyup="searchFish()" style="margin-right: 40px;">
+        <input type="text" id="searchInput" placeholder="Search for a fish recipe..." onkeyup="searchFishRecipes()">
     </div>
 
     <nav>
@@ -90,6 +91,16 @@
         <a href="#cdfw-rules-fish">California Department of Fish and Wildlife Regulations</a>
         <a href="#fish-recipes">Fish Recipes</a>
     </nav>
+
+    <div id="fishResults">
+        <h2>Fish Results</h2>
+        <ul id="fishList"></ul>
+      </div>
+    
+      <div id="fishrecipeResults">
+        <h2>Fish Recipe Results</h2>
+        <ul id="fishrecipesList"></ul>
+      </div>
 
     <div class="content">
         <section id="introduction" class="fish-section">
@@ -135,25 +146,33 @@
     <script>
         // JavaScript function to filter fish based on search input
         function searchFish() {
-            // Get the search input value
-            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
-
-            // Get the list of fish items
-            const fishList = document.getElementById('fishList');
-            const fish = fishList.getElementsByTagName('li');
-
-            // Loop through all the fish items
-            for (let i = 0; i < fish.length; i++) {
-                const fishName = fish[i].getElementsByTagName('strong')[0].innerText.toLowerCase();
-
-                // If the fish name matches the search query, display it, otherwise hide it
-                if (fishName.includes(searchQuery)) {
-                    fish[i].style.display = '';
-                } else {
-                    fish[i].style.display = 'none';
-                }
-            }
-        }
+      const query = document.getElementById('searchInput').value;
+      fetch(`/fish?name=${query}`)
+        .then(response => response.json())
+        .then(data => {
+          const fishList = document.getElementById('fishList');
+          fishList.innerHTML = '';
+          data.forEach(fish => {
+            const li = document.createElement('li');
+            li.textContent = fish.name;
+            fishList.appendChild(li);
+          });
+        });
+    }
+    function searchFishRecipes() {
+      const query = document.getElementById('searchFishRecipeInput').value;
+      fetch(`/fishrecipes?name=${query}`)
+        .then(response => response.json())
+        .then(data => {
+          const fishrecipesList = document.getElementById('fishrecipesList');
+          fishrecipesList.innerHTML = '';
+          data.forEach(fishrecipe => {
+            const li = document.createElement('li');
+            li.textContent = fishrecipe.name;
+            fishrecipesList.appendChild(li);
+          });
+        });
+    }
     </script>
 </body>
 </html>

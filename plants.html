@@ -40,7 +40,7 @@
             padding: 20px;
         }
         .search-bar {
-            margin-bottom: 20px;
+            padding: 10px;
             display: flex;
             justify-content: center;
         }
@@ -81,8 +81,9 @@
 
      <!-- Search Bar -->
      <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search for a plant..." onkeyup="searchPlants()">
-    </div>
+        <input type="text" id="searchInput" placeholder="Search for a plant..." onkeyup="searchPlants()" style="margin-right: 40px;">
+        <input type="text" id="searchInput" placeholder="Search for a plant recipe..." onkeyup="searchPlantsRecipes()">
+        </div>
 
     <nav>
         <a href="index.html">Home</a>
@@ -96,6 +97,16 @@
             <h2>What Are Edible Plants?</h2>
             <p>Edible plants are any plants that can be consumed by humans, either raw or cooked. They come from various categories, including vegetables, fruits, herbs, and even flowers. Many edible plants grow in the wild and can be foraged, while others are cultivated in gardens or farms.</p>
         </section>
+
+        <div id="plantResults">
+            <h2>Plant Results</h2>
+            <ul id="plantsList"></ul>
+          </div>
+        
+          <div id="plantrecipeResults">
+            <h2>Plant Recipe Results</h2>
+            <ul id="plantrecipesList"></ul>
+          </div>
 
         <section id="popular-plants" class="plant-section">
             <h2>Popular Edible Plants</h2>
@@ -135,26 +146,34 @@
     </footer>
  <script>
         // JavaScript function to filter plants based on search input
-        function searchPlants() {
-            // Get the search input value
-            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
-
-            // Get the list of plant items
-            const plantList = document.getElementById('plantList');
-            const plants = plantList.getElementsByTagName('li');
-
-            // Loop through all the plant items
-            for (let i = 0; i < plants.length; i++) {
-                const plantName = plants[i].getElementsByTagName('strong')[0].innerText.toLowerCase();
-
-                // If the plant name matches the search query, display it, otherwise hide it
-                if (plantName.includes(searchQuery)) {
-                    plants[i].style.display = '';
-                } else {
-                    plants[i].style.display = 'none';
-                }
-            }
-        }
+    function searchPlants() {
+      const query = document.getElementById('searchInput').value;
+      fetch(`/plants?name=${query}`)
+        .then(response => response.json())
+        .then(data => {
+          const plantsList = document.getElementById('plantsList');
+          plantsList.innerHTML = '';
+          data.forEach(plant => {
+            const li = document.createElement('li');
+            li.textContent = plant.name;
+            plantsList.appendChild(li);
+          });
+        });
+    }
+    function searchPlantRecipes() {
+      const query = document.getElementById('searchPlantRecipeInput').value;
+      fetch(`/plantrecipes?name=${query}`)
+        .then(response => response.json())
+        .then(data => {
+          const plantrecipesList = document.getElementById('plantrecipesList');
+          plantrecipesList.innerHTML = '';
+          data.forEach(plantrecipe => {
+            const li = document.createElement('li');
+            li.textContent = plantrecipe.name;
+            plantrecipesList.appendChild(li);
+          });
+        });
+    }
     </script>
 </body>
 </html>

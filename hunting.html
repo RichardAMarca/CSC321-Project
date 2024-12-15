@@ -40,6 +40,7 @@
             padding: 20px;
         }
         .search-bar {
+            padding: 20px;
             margin-bottom: 20px;
             display: flex;
             justify-content: center;
@@ -81,7 +82,8 @@
 
      <!-- Search Bar -->
      <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="searchGame()">
+        <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="searchGame()" style="margin-right: 40px;">
+        <input type="text" id="searchInput" placeholder="Search for a game recipe..." onkeyup="searchGameRecipes()">
     </div>
 
     <nav>
@@ -97,6 +99,16 @@
             <h2>What Are Edible Game?</h2>
             <p>Edible game are any animal that can be consumed by humans, by hunting. They can be including deer, elk, pheasant, duck, and turkey. These animals can be found in hunting areas during their designated hunting season.</p>
         </section>
+
+        <div id="gameResults">
+            <h2>Game Results</h2>
+            <ul id="gameList"></ul>
+          </div>
+        
+          <div id="gamerecipeResults">
+            <h2>Game Recipe Results</h2>
+            <ul id="gamerecipesList"></ul>
+          </div>
 
         <section id="popular-game" class="game-section">
             <h2>Popular Edible Game</h2>
@@ -137,25 +149,33 @@
     <script>
         // JavaScript function to filter game based on search input
         function searchGame() {
-            // Get the search input value
-            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
-
-            // Get the list of game items
-            const gameList = document.getElementById('gameList');
-            const game = gameList.getElementsByTagName('li');
-
-            // Loop through all the game items
-            for (let i = 0; i < game.length; i++) {
-                const gameName = game[i].getElementsByTagName('strong')[0].innerText.toLowerCase();
-
-                // If the game name matches the search query, display it, otherwise hide it
-                if (gameName.includes(searchQuery)) {
-                    game[i].style.display = '';
-                } else {
-                    game[i].style.display = 'none';
-                }
-            }
-        }
+      const query = document.getElementById('searchInput').value;
+      fetch(`/game?name=${query}`)
+        .then(response => response.json())
+        .then(data => {
+          const gameList = document.getElementById('gameList');
+          gameList.innerHTML = '';
+          data.forEach(game => {
+            const li = document.createElement('li');
+            li.textContent = game.name;
+            gameList.appendChild(li);
+          });
+        });
+    }
+    function searchGameRecipes() {
+      const query = document.getElementById('searchGameRecipeInput').value;
+      fetch(`/gamerecipes?name=${query}`)
+        .then(response => response.json())
+        .then(data => {
+          const gamerecipesList = document.getElementById('gamerecipesList');
+          gamerecipesList.innerHTML = '';
+          data.forEach(gamerecipe => {
+            const li = document.createElement('li');
+            li.textContent = gamerecipe.name;
+            gamerecipesList.appendChild(li);
+          });
+        });
+    }
     </script>
 </body>
 </html>
